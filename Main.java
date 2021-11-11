@@ -16,6 +16,7 @@ public class Main{
    System.out.println(IS.getStock());
    IS.addStock();
    System.out.println(IS.getStock());
+   IS.writeFile();
    //readFile();
    // fillItem();
     //add(ssd);

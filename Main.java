@@ -2,39 +2,44 @@ import java.util.*;
 import java.io.*;
 
 public class Main{
-  int[] item = new int[5];
+  int[] itemQuantity = new int[5];
+  String[] itemName = new String[5]; 
   int i;
   int ssd;
   public static void main(String[] args){
     new Main();
+     
   }
 
   public Main(){
-    readFile();
-    fillItem();
-    add(ssd);
-    System.out.println(ssd);
+   ItemStock IS = new ItemStock();
+   System.out.println(IS.getStock());
+   IS.addStock();
+   System.out.println(IS.getStock());
+   //readFile();
+   // fillItem();
+    //add(ssd);
+    //System.out.println(ssd);
   }//end cunstructor
-
-
     
-  public void readFile(){
+ /* public void readFile(){
 	  try {
 		  File theFile = new File("ItemStock.dat");
 		  Scanner input = new Scanner(theFile);
 		  while (input.hasNext()){
+                    itemName[i] = input.nextLine();
 	            String num = input.nextLine();
                     int Num = Integer.parseInt(num);
-                    item[i] = Num;  
+                    itemQuantity[i] = Num;  
 	           // System.out.println(item[i]);
                     i++;
 		  } // end while
 	  } catch (IOException e){
 		  System.out.println(e.getMessage());
 	  } // end try
-   }
+   }*/ 
 
-  public void fillItem(){
+ /* public void fillItem(){
     int gpu = item[0];
     int cpu = item[1];
     int psu = item[2];
@@ -47,7 +52,7 @@ public class Main{
   public void add(int i){
   int sum = i+1;
   this.ssd = sum;
-  }
+  }*/
 
-  //public void fillItem(
+  
 }//end Main

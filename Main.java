@@ -13,10 +13,12 @@ public class Main{
 
   public Main(){
    ItemStock IS = new ItemStock();
+   AccountInformation AI = new AccountInformation("John");
    System.out.println(IS.getStock());
    IS.addStock();
    System.out.println(IS.getStock());
    IS.writeFile();
+   System.out.println(AI.getfName());
    //readFile();
    // fillItem();
     //add(ssd);

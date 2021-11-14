@@ -1,11 +1,9 @@
 import java.util.*;
 import java.io.*;
-
+import java.util.Scanner;
 public class Main{
-  int[] itemQuantity = new int[5];
-  String[] itemName = new String[5]; 
-  int i;
-  int ssd;
+  public ArrayList<Account> accountList = new ArrayList<Account>();
+  Scanner input = new Scanner(System.in);
   public static void main(String[] args){
     new Main();
      
@@ -13,49 +11,48 @@ public class Main{
 
   public Main(){
    ItemStock IS = new ItemStock();
-   AccountInformation AI = new AccountInformation("John");
    System.out.println(IS.getStock());
    IS.addStock();
    System.out.println(IS.getStock());
    IS.writeFile();
-   System.out.println(AI.getfName());
-   //readFile();
-   // fillItem();
-    //add(ssd);
-    //System.out.println(ssd);
+   //registerAccount();
+   //saveAccount();
+   loadAccount();
+   System.out.println(accountList.get(0).getfName());
   }//end cunstructor
-    
- /* public void readFile(){
-	  try {
-		  File theFile = new File("ItemStock.dat");
-		  Scanner input = new Scanner(theFile);
-		  while (input.hasNext()){
-                    itemName[i] = input.nextLine();
-	            String num = input.nextLine();
-                    int Num = Integer.parseInt(num);
-                    itemQuantity[i] = Num;  
-	           // System.out.println(item[i]);
-                    i++;
-		  } // end while
-	  } catch (IOException e){
-		  System.out.println(e.getMessage());
-	  } // end try
-   }*/ 
-
- /* public void fillItem(){
-    int gpu = item[0];
-    int cpu = item[1];
-    int psu = item[2];
-    int ram = item[3];
-    this.ssd = item[4];
-    System.out.println(gpu);
-    System.out.println(ssd);
-  }
   
-  public void add(int i){
-  int sum = i+1;
-  this.ssd = sum;
-  }*/
 
+
+  public void registerAccount(){
+    System.out.println("Enter New First Name");
+    String name = input.nextLine();
+    accountList.add(new Account(name));
+  }//end addUser
+
+  public void saveAccount(){
+    try{
+       FileOutputStream SaveFile = new FileOutputStream("AccountList.dat");
+       ObjectOutputStream save = new ObjectOutputStream(SaveFile);
+       save.writeObject(accountList);
+    }//end try
+ 
+    catch (Exception e){
+      System.out.println(e.getMessage());
+    }//end catch 
+
+}//end saveUser
+
+  @SuppressWarnings("unchecked")  
+  public void loadAccount(){
+    try{
+      FileInputStream LoadFile = new FileInputStream("AccountList.dat");
+      ObjectInputStream load = new ObjectInputStream(LoadFile);
+      accountList = (ArrayList<Account>)load.readObject();
+    }//end try
+
+    catch (Exception e){
+      System.out.println(e.getMessage());
+    }//end catch
   
-}//end Main
+  }//end loadUser
+}//Main

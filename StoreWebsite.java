@@ -34,8 +34,8 @@ public class StoreWebsite{
               System.out.println("Welcome " + accountList.get(i).getfName());
               bool = false;
             }
-            else if(i==1){
-              System.out.println("Hi");
+            else if(i==accountList.size()-1){
+              System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
               i=0;
               Email = input.nextLine();
             }

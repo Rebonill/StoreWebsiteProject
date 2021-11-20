@@ -6,6 +6,7 @@ public class StoreWebsite{
   public ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
   boolean keepGoing = true;
+  boolean bool = true;
   public StoreWebsite(){
    ItemStock IS = new ItemStock();
    System.out.println(IS.getStock());
@@ -17,18 +18,37 @@ public class StoreWebsite{
    System.out.println(accountList.get(1).getfName());
    System.out.println(accountList.get(1).getlName());
    System.out.println(accountList.get(1).getEmail());
-   //NextPage();
+   NextPage();
   }//end cunstructor
 
   public void NextPage(){
    // int response = MainPage();
     while(keepGoing){
+      int i = 0;
       int response = MainPage();
       if(response == 1){
-       /* while(bool){
-          String Email = input.nextLine();
-
-        }*/
+          System.out.println("Please Enter Your Email");
+          String Email = input.nextLine();         
+          while(bool){
+            if(Email.equals(accountList.get(i).getEmail())){
+              System.out.println("Welcome " + accountList.get(i).getfName());
+              bool = false;
+            }
+            else if(i==1){
+              System.out.println("Hi");
+              i=0;
+              Email = input.nextLine();
+            }
+            else{
+            i++;
+            }
+          }
+           /* else if (i == accountList.size()){
+              System.out.println("Not The Correct Email. Please Enter The Correct Email");
+              i=0;
+              Email = input.nextLine();
+          }*/
+        
         System.out.println("Sign into account");
         keepGoing = false;
       }//end if statement
@@ -49,6 +69,7 @@ public class StoreWebsite{
       } //end else
     }//end while loop 
   }
+  
  
   public int MainPage(){
     System.out.println("Welcome To TechStop \n");

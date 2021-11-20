@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class StoreWebsite{
   public ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
-
+  boolean keepGoing = true;
   public StoreWebsite(){
    ItemStock IS = new ItemStock();
    System.out.println(IS.getStock());
@@ -17,14 +17,48 @@ public class StoreWebsite{
    System.out.println(accountList.get(0).getfName());
    System.out.println(accountList.get(0).getlName());
    MainPage();
+   NextPage();
   }//end cunstructor
+
+  public void NextPage(){
+   // int response = MainPage();
+    while(keepGoing){
+      int response = MainPage();
+      if(response == 1){
+        System.out.println("Sign into account");
+        keepGoing = false;
+      }//end if statement
+      else if(response == 2){
+        System.out.println("Register For An Account");
+         keepGoing = false;
+      }//end if statement 
+      else if(response == 3){
+        System.out.println("Continue As Guest");
+         keepGoing = false;
+      }//end if statement
+      else if(response==0){
+        System.out.println("Admin Sign In");
+         keepGoing = false;
+      }//end if statement
+      else{
+        System.out.println("Not a Menu Option please choose again");
+      } //end else
+    }//end while loop 
+  }
+
+
+
+
     
-  public void MainPage(){
+  public int MainPage(){
     System.out.println("Welcome To TechStop \n");
     System.out.println("1) Sign Into Your Account.");
     System.out.println("2) Register For An Acount.");
     System.out.println("3) Conintue As Guest.");
     System.out.println("0) Admin Sign In."); 
+    String choice = input.nextLine();
+    int response = Integer.parseInt(choice);
+    return response;
   }
   
   public void registerAccount(){

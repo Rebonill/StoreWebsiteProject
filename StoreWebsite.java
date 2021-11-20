@@ -14,10 +14,10 @@ public class StoreWebsite{
    IS.writeFile();
    loadAccount();
    //registerAccount();
-   System.out.println(accountList.get(0).getfName());
-   System.out.println(accountList.get(0).getlName());
-   MainPage();
-   NextPage();
+   System.out.println(accountList.get(1).getfName());
+   System.out.println(accountList.get(1).getlName());
+   System.out.println(accountList.get(1).getEmail());
+   //NextPage();
   }//end cunstructor
 
   public void NextPage(){
@@ -25,11 +25,15 @@ public class StoreWebsite{
     while(keepGoing){
       int response = MainPage();
       if(response == 1){
+       /* while(bool){
+          String Email = input.nextLine();
+
+        }*/
         System.out.println("Sign into account");
         keepGoing = false;
       }//end if statement
       else if(response == 2){
-        System.out.println("Register For An Account");
+         registerAccount();
          keepGoing = false;
       }//end if statement 
       else if(response == 3){
@@ -45,11 +49,7 @@ public class StoreWebsite{
       } //end else
     }//end while loop 
   }
-
-
-
-
-    
+ 
   public int MainPage(){
     System.out.println("Welcome To TechStop \n");
     System.out.println("1) Sign Into Your Account.");
@@ -66,7 +66,9 @@ public class StoreWebsite{
     String fName = input.nextLine();
     System.out.println("Enter Your Last Name");
     String lName = input.nextLine();
-    accountList.add(new Account(fName, lName));
+    System.out.println("Enter Your Email");
+    String Email = input.nextLine();
+    accountList.add(new Account(fName, lName, Email));
     saveAccount();
   }//end registeraccount
 

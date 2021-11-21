@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class StoreWebsite{
   public ArrayList<Account> accountList = new ArrayList<Account>();
@@ -18,14 +18,13 @@ public class StoreWebsite{
    System.out.println(accountList.get(1).getfName());
    System.out.println(accountList.get(1).getlName());
    System.out.println(accountList.get(1).getEmail());
-   NextPage();
+   MainPage();
   }//end cunstructor
 
-  public void NextPage(){
-   // int response = MainPage();
+  public void MainPage(){
+    int i = 0;
+    int response = pageChoice();
     while(keepGoing){
-      int i = 0;
-      int response = MainPage();
       if(response == 1){
           System.out.println("Please Enter Your Email");
           String Email = input.nextLine();         
@@ -43,11 +42,6 @@ public class StoreWebsite{
             i++;
             }
           }
-           /* else if (i == accountList.size()){
-              System.out.println("Not The Correct Email. Please Enter The Correct Email");
-              i=0;
-              Email = input.nextLine();
-          }*/
         
         System.out.println("Sign into account");
         keepGoing = false;
@@ -61,17 +55,30 @@ public class StoreWebsite{
          keepGoing = false;
       }//end if statement
       else if(response==0){
-        System.out.println("Admin Sign In");
-         keepGoing = false;
+         System.out.println("Please Enter Your Email");
+         String Email = input.nextLine();         
+           while(bool){
+             if(Email.equals("Admin@TechShop.com")){
+               System.out.println("Welcome Admin");
+               bool = false;
+             }//end if statement 
+             else{
+               System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
+               Email = input.nextLine();
+             }//end else statement
+           }
+             System.out.println("Admin Sign In");
+             keepGoing = false;
       }//end if statement
-      else{
+      else {
         System.out.println("Not a Menu Option please choose again");
+        response = pageChoice();
       } //end else
     }//end while loop 
   }
   
  
-  public int MainPage(){
+  public int pageChoice(){
     System.out.println("Welcome To TechStop \n");
     System.out.println("1) Sign Into Your Account.");
     System.out.println("2) Register For An Acount.");

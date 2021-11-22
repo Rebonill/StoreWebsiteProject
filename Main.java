@@ -11,6 +11,7 @@ public class Main{
 
   public Main(){
    StoreWebsite SW = new StoreWebsite();
+   SW.MainPage();
    /*ItemStock IS = new ItemStock();
    System.out.println(IS.getStock());
    IS.addStock();

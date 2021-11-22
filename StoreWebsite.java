@@ -5,8 +5,10 @@ import java.io.*;
 public class StoreWebsite{
   public ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
+  CustomerMenu CM = new CustomerMenu();
   boolean keepGoing = true;
   boolean bool = true;
+
   public StoreWebsite(){
    ItemStock IS = new ItemStock();
    System.out.println(IS.getStock());
@@ -18,7 +20,7 @@ public class StoreWebsite{
    System.out.println(accountList.get(1).getfName());
    System.out.println(accountList.get(1).getlName());
    System.out.println(accountList.get(1).getEmail());
-   MainPage();
+   //MainPage();
   }//end cunstructor
 
   public void MainPage(){
@@ -32,6 +34,7 @@ public class StoreWebsite{
             if(Email.equals(accountList.get(i).getEmail())){
               System.out.println("Welcome " + accountList.get(i).getfName());
               bool = false;
+              CM.customerMenu();
             }
             else if(i==accountList.size()-1){
               System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
@@ -40,7 +43,7 @@ public class StoreWebsite{
             }
             else{
             i++;
-            }
+            } 
           }
         
         System.out.println("Sign into account");
@@ -60,6 +63,7 @@ public class StoreWebsite{
            while(bool){
              if(Email.equals("Admin@TechShop.com")){
                System.out.println("Welcome Admin");
+               
                bool = false;
              }//end if statement 
              else{

@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.*;
-//import java.util.Scanner;
 
 public class StoreWebsite{
   public ArrayList<Account> accountList = new ArrayList<Account>();
@@ -11,9 +10,6 @@ public class StoreWebsite{
 
   public StoreWebsite(){
    ItemStock IS = new ItemStock();
-   System.out.println(IS.getStock());
-   IS.addStock();
-   System.out.println(IS.getStock());
    IS.writeFile();
    loadAccount();
    //registerAccount();

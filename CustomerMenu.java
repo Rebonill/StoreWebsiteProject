@@ -1,23 +1,23 @@
 import java.util.*;
 
 public class CustomerMenu{
-  ItemStock IS = new ItemStock(); 
+  Checkout Co = new Checkout();
   Scanner input = new Scanner(System.in);
   boolean bool = true;
-  boolean kG = true;
+  boolean keepGoing = true;
   public CustomerMenu(){
-    
+  //IS.writeFile(); 
   }
 
   public void customerMenu(){
     int response = customerOptions();
-    while(kG){
+    while(keepGoing){
       if(response == 1){
         computerHardware();  
-        kG = false; 
+        keepGoing = false; 
       }
       else if(response == 3){
-        kG = false;
+        keepGoing = false;
       }
       else{
         //continue;
@@ -36,26 +36,30 @@ public class CustomerMenu{
   }
 
   public void computerHardware(){
-    int c = hardwareOptions();
-    //while(bool){
-    //  c = hardwareOptions();
-      if(c == 0){
-        System.out.println("This where we will send to checkout class");
+    int choice = hardwareOptions();
+    while(bool){
+      if(choice == 0){
+        Co.setcheckOutList(choice);
+        System.out.println("Item added to Cart");
         System.out.println("Is there anything else you would like to add to your cart?");
+        choice = hardwareOptions();
       }  
-      /*else if(c == 1){
-        System.out.println("This where we will send to checkout class");
+      else if(choice == 1){
+        Co.setcheckOutList(choice);
         System.out.println("Is there anything else you would like to add to your cart?");
+        choice = hardwareOptions();
       }
-      else if(c == 2){
-        System.out.println("Check out and bills show");
+      else if(choice == 2){
+       System.out.println("Check out and bills show");
+       Co.getcheckoutList();
+       bool = false;
       }
       else{
        System.out.println("Not a Menu Option Try Again");
-       c = hardwareOptions(); 
-      }*/
+       choice = hardwareOptions(); 
+      }
       
-    //} 
+    }//end while loop 
   }
   public int hardwareOptions(){
     System.out.println("Here Are Our Hardware Options.");

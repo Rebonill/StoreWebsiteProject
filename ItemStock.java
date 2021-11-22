@@ -54,12 +54,15 @@ public class ItemStock{
     }//end catch
    
   }//end writeFile
-  
-  public int getStock(){
-    return itemQuantity[0];
+  public String getitemName(int i){
+    return itemName[i];
+  } 
+ 
+  public int getStock(int i){
+    return itemQuantity[i];
   }
   
-  public void addStock(){
+  public void removeStock(){
     itemQuantity[0]-=1;
   }
 

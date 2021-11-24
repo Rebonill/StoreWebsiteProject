@@ -9,13 +9,9 @@ public class StoreWebsite{
   boolean bool = true;
 
   public StoreWebsite(){
-   ItemStock IS = new ItemStock();
-   IS.writeFile();
+   //accountList.add(new Account("Admin", "Admin", "Admin@TechShop.com")); 
    loadAccount();
    //registerAccount();
-   System.out.println(accountList.get(1).getfName());
-   System.out.println(accountList.get(1).getlName());
-   System.out.println(accountList.get(1).getEmail());
    //MainPage();
   }//end cunstructor
 

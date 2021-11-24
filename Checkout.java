@@ -1,13 +1,12 @@
 import java.util.*;
-public class Checkout{
+public class Checkout extends ItemStock{
 ArrayList <String> checkOut = new ArrayList <String>();
 ArrayList <Integer> itemcost = new ArrayList <Integer>();
-ItemStock IS = new ItemStock();
   public Checkout(){
   }
 
   public void setcheckOutList(int i){
-    checkOut.add(IS.getitemName(i));
+    checkOut.add(getitemName(i));
   }
 
   public void getcheckoutList(){

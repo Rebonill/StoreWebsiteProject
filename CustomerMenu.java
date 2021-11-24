@@ -49,6 +49,7 @@ public class CustomerMenu{
         Co.setcheckOutList(choice);
         System.out.println("Item added to Cart");
         System.out.println("Is there anything else you would like to add to your cart?");
+        Is.decreaseStock(choice);
         choice = hardwareOptions();
         }
       }  
@@ -60,6 +61,7 @@ public class CustomerMenu{
       else if(choice == 2){
        System.out.println("Check out and bills show");
        Co.getcheckoutList();
+       Is.writeFile();
        bool = false;
       }
       else{

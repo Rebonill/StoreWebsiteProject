@@ -12,7 +12,6 @@ public class StoreWebsite{
    //accountList.add(new Account("Admin", "Admin", "Admin@TechShop.com")); 
    loadAccount();
    //registerAccount();
-   //MainPage();
   }//end cunstructor
 
   public void MainPage(){
@@ -27,17 +26,16 @@ public class StoreWebsite{
               System.out.println("Welcome " + accountList.get(i).getfName());
               bool = false;
               CM.customerMenu();
-            }
+            }//end if
             else if(i==accountList.size()-1){
               System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
               i=0;
               Email = input.nextLine();
-            }
+            }//end else if
             else{
             i++;
-            } 
-          }
-        
+            }//end else 
+          }//end While Loop   
         System.out.println("Sign into account");
         keepGoing = false;
       }//end if statement
@@ -47,22 +45,23 @@ public class StoreWebsite{
       }//end if statement 
       else if(response == 3){
         System.out.println("Continue As Guest");
-         keepGoing = false;
+        CM.customerMenu(); 
+        keepGoing = false;
       }//end if statement
-      else if(response==0){
+      else if(response==4){
          System.out.println("Please Enter Your Email");
          String Email = input.nextLine();         
            while(bool){
              if(Email.equals("Admin@TechShop.com")){
                System.out.println("Welcome Admin");
-               
+               AdminMenu();
                bool = false;
              }//end if statement 
              else{
                System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
                Email = input.nextLine();
              }//end else statement
-           }
+           }//End While Loop
              System.out.println("Admin Sign In");
              keepGoing = false;
       }//end if statement
@@ -71,14 +70,40 @@ public class StoreWebsite{
         response = pageChoice();
       } //end else
     }//end while loop 
+  }//end MainPage
+
+  public void AdminMenu(){
+    int choice = AdminChoice();
+    if(choice == 1){
+      for(int i=0; i<accountList.size(); i++){
+        System.out.println(accountList.get(i).getfName());
+      }
+    }
+    else{
+      System.out.println("Not a Menu Option Please Choose Again");
+      choice = AdminChoice();
+    }
+  }//end AdmninMenu
+
+  public int AdminChoice(){
+    System.out.println("Here Are Your Menu Choices");
+    System.out.println("1) Check Customer Account List");
+    System.out.println("2) Remove Customer Account");
+    System.out.println("3) Edit Stock Items");
+    System.out.println("4) Exit");
+    String Response = input.nextLine();
+    int Choice = Integer.parseInt(Response);
+    return Choice;  
   }
- 
+
+
+
   public int pageChoice(){
     System.out.println("Welcome To TechStop \n");
     System.out.println("1) Sign Into Your Account.");
     System.out.println("2) Register For An Acount.");
     System.out.println("3) Conintue As Guest.");
-    System.out.println("0) Admin Sign In."); 
+    System.out.println("4) Admin Sign In."); 
     String choice = input.nextLine();
     int response = Integer.parseInt(choice);
     return response;

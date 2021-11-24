@@ -19,7 +19,6 @@ public class CustomerMenu{
         keepGoing = false;
       }
       else{
-        //continue;
       }
     }
   } 
@@ -59,12 +58,13 @@ public class CustomerMenu{
         }
         Co.setcheckOutList(choice);
         System.out.println("Is there anything else you would like to add to your cart?"+"\n");
+        System.out.println("Item added to Cart");
         Co.decreaseStock(choice);
         choice = hardwareOptions();
       }
       else if(choice == 2){
-       System.out.println("Check out and bills show");
        Co.getcheckoutList();
+       Co.getTotalCost();
        Co.writeFile();
        bool = false;
       }

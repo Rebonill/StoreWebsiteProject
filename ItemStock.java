@@ -5,7 +5,6 @@ public class ItemStock{
   String[] itemName = new String[2];
   int[] itemQuantity = new int[2];
   int [] itemCost = new int[2];
- // int [] item
   int i;
   public  ItemStock(){
     readFile();
@@ -57,11 +56,13 @@ public class ItemStock{
   public String getitemName(int i){
     return itemName[i];
   } 
- 
+   
   public int getStock(int i){
     return itemQuantity[i];
   }
-  
+  public int getCost(int i){
+    return itemCost[i];
+  }
   public void decreaseStock(int i){
     itemQuantity[i]-=1;
   }

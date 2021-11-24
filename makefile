@@ -1,4 +1,4 @@
-Main.class: Main.java StoreWebsite.class Account.class ItemStock.class AccountInterface.class CustomerMenu.class
+Main.class: Main.java StoreWebsite.class Account.class ItemStock.class AccountInterface.class CustomerMenu.class Checkout.class
 	javac -g Main.java
 StoreWebsite.class: StoreWebsite.java
 	javac -g StoreWebsite.java

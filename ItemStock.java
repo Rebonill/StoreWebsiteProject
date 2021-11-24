@@ -5,7 +5,7 @@ public class ItemStock{
   String[] itemName = new String[2];
   int[] itemQuantity = new int[2];
   int [] itemCost = new int[2];
-
+ // int [] item
   int i;
   public  ItemStock(){
     readFile();

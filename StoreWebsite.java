@@ -76,7 +76,6 @@ public class StoreWebsite{
       } //end else
     }//end while loop 
   }
-  
  
   public int pageChoice(){
     System.out.println("Welcome To TechStop \n");

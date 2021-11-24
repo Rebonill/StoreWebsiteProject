@@ -3,6 +3,7 @@ import java.util.*;
 public class CustomerMenu{
   Checkout Co = new Checkout();
   Scanner input = new Scanner(System.in);
+  ItemStock Is = new ItemStock();
   boolean bool = true;
   boolean keepGoing = true;
   public CustomerMenu(){
@@ -39,10 +40,17 @@ public class CustomerMenu{
     int choice = hardwareOptions();
     while(bool){
       if(choice == 0){
+        if(Is.getStock(choice)==0){
+          System.out.println("We Apologize But This Item Is Out Of Stock");
+          System.out.println("Would You like To Choose A Different Product");
+          choice = hardwareOptions();
+        }
+        else{
         Co.setcheckOutList(choice);
         System.out.println("Item added to Cart");
         System.out.println("Is there anything else you would like to add to your cart?");
         choice = hardwareOptions();
+        }
       }  
       else if(choice == 1){
         Co.setcheckOutList(choice);

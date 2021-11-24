@@ -11,8 +11,9 @@ ItemStock IS = new ItemStock();
   }
 
   public void getcheckoutList(){
-    System.out.println(checkOut.get(0));
-    System.out.println(checkOut.get(1));
+    for(int i=0; i < checkOut.size(); i++){
+     System.out.println(checkOut.get(i));
+    }
   }
 
 }

@@ -62,8 +62,8 @@ public class ItemStock{
     return itemQuantity[i];
   }
   
-  public void removeStock(){
-    itemQuantity[0]-=1;
+  public void removeStock(int i){
+    itemQuantity[i]-=1;
   }
 
 }//end ItemStock

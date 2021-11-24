@@ -42,20 +42,26 @@ public class CustomerMenu{
       if(choice == 0){
         if(Is.getStock(choice)==0){
           System.out.println("We Apologize But This Item Is Out Of Stock");
-          System.out.println("Would You like To Choose A Different Product");
+          System.out.println("Would You like To Choose A Different Product"+"\n");
           choice = hardwareOptions();
         }
         else{
         Co.setcheckOutList(choice);
         System.out.println("Item added to Cart");
-        System.out.println("Is there anything else you would like to add to your cart?");
+        System.out.println("Is there anything else you would like to add to your cart?"+"\n");
         Is.decreaseStock(choice);
         choice = hardwareOptions();
         }
       }  
       else if(choice == 1){
+        if(Is.getStock(choice)==1){
+          System.out.println("We Apologize But This Item Is Out Of Stock");
+          System.out.println("Would You like To Choose A Different Product"+"\n");
+          choice = hardwareOptions();
+        }
         Co.setcheckOutList(choice);
-        System.out.println("Is there anything else you would like to add to your cart?");
+        System.out.println("Is there anything else you would like to add to your cart?"+"\n");
+        Is.decreaseStock(choice);
         choice = hardwareOptions();
       }
       else if(choice == 2){

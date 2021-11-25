@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class StoreWebsite{
+public class StoreWebsite extends ItemStock{
   public ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
   CustomerMenu CM = new CustomerMenu();
@@ -77,6 +77,7 @@ public class StoreWebsite{
     if(choice == 1){
       for(int i=0; i<accountList.size(); i++){
         System.out.println(accountList.get(i).getfName());
+        System.out.println(getitemName(i));
       }
     }
     else{
@@ -84,7 +85,7 @@ public class StoreWebsite{
       choice = AdminChoice();
     }
   }//end AdmninMenu
-
+    
   public int AdminChoice(){
     System.out.println("Here Are Your Menu Choices");
     System.out.println("1) Check Customer Account List");

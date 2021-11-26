@@ -85,9 +85,24 @@ public class StoreWebsite extends ItemStock{
         }//end forloop
         choice = AdminChoice();
       }//end if statement
+      else if(choice == 2){
+        System.out.println("Please Type The Email Associated With The Account You Want To Delete.");
+        String Email = input.nextLine();
+        for(int i=0; i<accountList.size(); i++){
+          if(Email.equals(accountList.get(i).getEmail())){
+            accountList.remove(accountList.get(i));
+            System.out.println("Account Removed");
+          }
+          else{
+           // System.out.println("Account Does Not Exitst");
+          }//end else Statement
+        }//end if Statement
+        choice = AdminChoice();
+      }
       else if(choice == 4){
         System.out.println("Thank You And Have A Nice Day!");
         bool = false;
+        saveAccount();
       }//end else if
       else{
         System.out.println("Not a Menu Option Please Choose Again");

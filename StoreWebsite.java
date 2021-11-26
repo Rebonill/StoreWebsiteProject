@@ -7,7 +7,6 @@ public class StoreWebsite extends ItemStock{
   CustomerMenu CM = new CustomerMenu();
   boolean keepGoing = true;
   boolean bool = true;
-
   public StoreWebsite(){
    //accountList.add(new Account("Admin", "Admin", "Admin@TechShop.com")); 
    loadAccount();
@@ -50,7 +49,8 @@ public class StoreWebsite extends ItemStock{
       }//end if statement
       else if(response==4){
          System.out.println("Please Enter Your Email");
-         String Email = input.nextLine();         
+         String Email = input.nextLine();
+         System.out.println();         
            while(bool){
              if(Email.equals("Admin@TechShop.com")){
                System.out.println("Welcome Admin");
@@ -62,7 +62,6 @@ public class StoreWebsite extends ItemStock{
                Email = input.nextLine();
              }//end else statement
            }//End While Loop
-             System.out.println("Admin Sign In");
              keepGoing = false;
       }//end if statement
       else {
@@ -74,15 +73,26 @@ public class StoreWebsite extends ItemStock{
 
   public void AdminMenu(){
     int choice = AdminChoice();
-    if(choice == 1){
-      for(int i=0; i<accountList.size(); i++){
-        System.out.println(accountList.get(i).getfName());
-        System.out.println(getitemName(i));
-      }
-    }
-    else{
-      System.out.println("Not a Menu Option Please Choose Again");
-      choice = AdminChoice();
+    while(bool){
+      if(choice == 1){
+        for(int i=0; i<accountList.size(); i++){
+          
+          System.out.println(i+1+"\n"+"First and Last Name");
+          System.out.println(accountList.get(i).getfName()+" "+accountList.get(i).getlName());
+          System.out.println("Email");
+          System.out.println(accountList.get(i).getEmail()+"\n");
+          //System.out.println(getitemName(i));
+        }//end forloop
+        choice = AdminChoice();
+      }//end if statement
+      else if(choice == 4){
+        System.out.println("Thank You And Have A Nice Day!");
+        bool = false;
+      }//end else if
+      else{
+        System.out.println("Not a Menu Option Please Choose Again");
+        choice = AdminChoice();
+      }//end else
     }
   }//end AdmninMenu
     
@@ -93,22 +103,22 @@ public class StoreWebsite extends ItemStock{
     System.out.println("3) Edit Stock Items");
     System.out.println("4) Exit");
     String Response = input.nextLine();
+    System.out.println();
     int Choice = Integer.parseInt(Response);
     return Choice;  
-  }
-
-
+  }//end AdminChoice
 
   public int pageChoice(){
     System.out.println("Welcome To TechStop \n");
     System.out.println("1) Sign Into Your Account.");
     System.out.println("2) Register For An Acount.");
     System.out.println("3) Conintue As Guest.");
-    System.out.println("4) Admin Sign In."); 
+    System.out.println("4) Admin Sign In." +"\n"); 
     String choice = input.nextLine();
+    System.out.println();
     int response = Integer.parseInt(choice);
     return response;
-  }
+  }//end pageChoice
   
   public void registerAccount(){
     System.out.println("Enter Your First Name");

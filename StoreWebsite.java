@@ -98,26 +98,27 @@ public class StoreWebsite extends ItemStock implements Website{
             System.out.println("Account Removed");
           }
           else{
-           // System.out.println("Account Does Not Exitst");
+            System.out.println("Account Does Not Exitst");
           }//end else Statement
         }//end if Statement
         choice = AdminChoice();
       }
       else if(choice == 3){
-        
-
-
+        itemList();  
+        System.out.println("Please Select An Item To Edit");
+        EditStock();
+        choice = AdminChoice(); 
       }
       else if(choice == 4){
         System.out.println("Thank You And Have A Nice Day!");
         bool = false;
-        saveAccount();
+       saveAccount();
       }//end else if
       else{
         System.out.println("Not a Menu Option Please Choose Again");
         choice = AdminChoice();
       }//end else
-    }
+    }//end while loop
   }//end AdmninMenu
     
   public int AdminChoice(){
@@ -143,6 +144,53 @@ public class StoreWebsite extends ItemStock implements Website{
     int response = Integer.parseInt(choice);
     return response;
   }//end pageChoice
+
+  public void itemList(){
+    System.out.println("Here Is The List Of All The Items");
+    for(int i=0; i<itemName.length; i++){
+      System.out.println(itemName[i]+": "+itemCost[i]);
+      System.out.println("Quantity: "+itemQuantity[i]);
+      System.out.println();
+    } 
+  }
+   
+  public void EditStock(){
+    int choice = StockItems();
+    while(bool){
+      if(choice == 0){
+        System.out.println("Enter New Quantiy For "+getitemName(choice));
+        itemQuantity[choice] = Integer.parseInt(input.nextLine()); 
+        System.out.println("Would You Like To Edit Another Item?"); 
+        choice = StockItems();
+      }
+      
+      else if(choice == 1){
+        System.out.println("Enter New Quantiy For "+getitemName(choice));
+        itemQuantity[choice] = Integer.parseInt(input.nextLine());  
+        System.out.println("Would You Like To Edit Another Item?");
+        choice = StockItems();   
+      }
+      else if(choice == 2){
+        System.out.println("Updated Stock Information");
+        itemList();
+        writeFile();
+        bool = false;
+      }
+      else{
+        System.out.println("Not a Menu Option Try Again");
+        choice = StockItems();
+      } 
+    }//end while loop 
+  }
+
+ public int StockItems(){
+   System.out.println("0) GPU(Graphics Processing Unit)");
+   System.out.println("1) CPU (Central Processor Unit)");
+   System.out.println("2) Exit");
+   String Response = input.nextLine();
+   int res = Integer.parseInt(Response);
+   return res;
+ }  
   
   public void registerAccount(){
     System.out.println("Enter Your First Name");

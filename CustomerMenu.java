@@ -34,6 +34,9 @@ public class CustomerMenu{
   }
 
   public void computerHardware(){
+    System.out.println("Here Is A List Of Our Hardware And Prices");
+    Co.itemList();
+    System.out.println("What Would You Like to Buy?"+"\n");
     int choice = hardwareOptions();
     while(bool){
       if(choice == 0){
@@ -76,7 +79,6 @@ public class CustomerMenu{
     }//end while loop 
   }
   public int hardwareOptions(){
-    System.out.println("Here Are Our Hardware Options.");
     System.out.println("0) GPU(Graphics Processing Unit");
     System.out.println("1) CPU (Central Processor Unit");
     System.out.println("2) Checkout");

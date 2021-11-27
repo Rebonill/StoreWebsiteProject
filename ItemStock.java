@@ -53,6 +53,11 @@ public class ItemStock{
     }//end catch
    
   }//end writeFile
+  public void itemList(){
+    for(int i=0; i<itemName.length; i++){
+      System.out.println(itemName[i]+": "+itemCost[i]);
+    } 
+  }
   public String getitemName(int i){
     return itemName[i];
   } 

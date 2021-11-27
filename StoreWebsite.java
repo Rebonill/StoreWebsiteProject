@@ -155,8 +155,9 @@ public class StoreWebsite extends ItemStock implements Website{
   }
    
   public void EditStock(){
+    boolean KG = true;
     int choice = StockItems();
-    while(bool){
+    while(KG){
       if(choice == 0){
         System.out.println("Enter New Quantiy For "+getitemName(choice));
         itemQuantity[choice] = Integer.parseInt(input.nextLine()); 
@@ -174,7 +175,7 @@ public class StoreWebsite extends ItemStock implements Website{
         System.out.println("Updated Stock Information");
         itemList();
         writeFile();
-        bool = false;
+        KG = false;
       }
       else{
         System.out.println("Not a Menu Option Try Again");

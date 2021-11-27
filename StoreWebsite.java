@@ -1,15 +1,19 @@
 import java.util.*;
 import java.io.*;
 
-public class StoreWebsite extends ItemStock{
+public class StoreWebsite extends ItemStock implements Website{
   public ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
   CustomerMenu CM = new CustomerMenu();
   boolean keepGoing = true;
   boolean bool = true;
+  public static void main(String[] args){
+    new StoreWebsite();   
+  }
   public StoreWebsite(){
    //accountList.add(new Account("Admin", "Admin", "Admin@TechShop.com")); 
    loadAccount();
+   MainPage();
    //registerAccount();
   }//end cunstructor
 
@@ -99,6 +103,11 @@ public class StoreWebsite extends ItemStock{
         }//end if Statement
         choice = AdminChoice();
       }
+      else if(choice == 3){
+        
+
+
+      }
       else if(choice == 4){
         System.out.println("Thank You And Have A Nice Day!");
         bool = false;
@@ -122,7 +131,7 @@ public class StoreWebsite extends ItemStock{
     int Choice = Integer.parseInt(Response);
     return Choice;  
   }//end AdminChoice
-
+  
   public int pageChoice(){
     System.out.println("Welcome To TechStop \n");
     System.out.println("1) Sign Into Your Account.");
@@ -172,4 +181,5 @@ public class StoreWebsite extends ItemStock{
     }//end catch
   
   }//end loadUser
-}//Main
+
+}//end StoreWebsite

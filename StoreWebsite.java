@@ -14,6 +14,7 @@ public class StoreWebsite extends ItemStock implements Website{
    //accountList.add(new Account("Admin", "Admin", "Admin@TechShop.com")); 
    loadAccount();
    MainPage();
+   //System.out.println(accountList.get(0).getbH());
    //registerAccount();
   }//end cunstructor
 
@@ -29,6 +30,8 @@ public class StoreWebsite extends ItemStock implements Website{
               System.out.println("Welcome " + accountList.get(i).getfName());
               bool = false;
               CM.customerMenu();
+              //accountList.get(i).billingHistory(Co.List); 
+              //saveAccount();
             }//end if
             else if(i==accountList.size()-1){
               System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
@@ -127,22 +130,37 @@ public class StoreWebsite extends ItemStock implements Website{
     System.out.println("2) Remove Customer Account");
     System.out.println("3) Edit Stock Items");
     System.out.println("4) Exit");
-    String Response = input.nextLine();
-    System.out.println();
-    int Choice = Integer.parseInt(Response);
-    return Choice;  
+    try{
+      String Response = input.nextLine();
+      System.out.println();
+      int Choice = Integer.parseInt(Response);
+      return Choice; 
+    }catch (NumberFormatException e){
+       System.out.println("Please Enter A Number");
+    }catch (Exception e){
+       System.out.println(e.getMessage());
+    } // end try 
+    return 0;
   }//end AdminChoice
   
   public int pageChoice(){
+    System.out.println();
     System.out.println("Welcome To TechStop \n");
     System.out.println("1) Sign Into Your Account.");
     System.out.println("2) Register For An Acount.");
     System.out.println("3) Conintue As Guest.");
-    System.out.println("4) Admin Sign In." +"\n"); 
-    String choice = input.nextLine();
-    System.out.println();
-    int response = Integer.parseInt(choice);
-    return response;
+    System.out.println("4) Admin Sign In." +"\n");
+    try{ 
+      String choice = input.nextLine();
+      System.out.println();
+      int response = Integer.parseInt(choice);
+      return response;
+    }catch (NumberFormatException e){
+       System.out.println("Please Enter A Number");
+    }catch (Exception e){
+       System.out.println(e.getMessage());
+    } // end try 
+    return 0;
   }//end pageChoice
 
   public void itemList(){

@@ -4,6 +4,7 @@ public class Account implements AccountInterface, Serializable{
   String fName;
   String lName;
   String email;
+  String BillingHistory;
   //String password;
 
   public Account(String fName, String lName, String email){
@@ -21,6 +22,11 @@ public class Account implements AccountInterface, Serializable{
   public String getEmail(){
     return email;
   }
-
+  public String getbH(){
+    return BillingHistory;
+  }
+  public void billingHistory(String List){
+   BillingHistory+=List; 
+  }
 
 }

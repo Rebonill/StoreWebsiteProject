@@ -66,7 +66,7 @@ public class CustomerMenu{
         choice = hardwareOptions();
       }
       else if(choice == 2){
-       Co.getcheckoutList();
+       System.out.println(Co.getcheckoutList());
        Co.getTotalCost();
        Co.writeFile();
        bool = false;

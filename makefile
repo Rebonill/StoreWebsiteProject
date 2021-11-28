@@ -12,6 +12,8 @@ ItemStock.class: ItemStock.java
 
 Account.class: Account.java
 	javac -g Account.java
+Checkout.class: Checkout.java
+	javac -g Checkout.java
 
 clean:
 	rm *.class

@@ -4,6 +4,7 @@ public class Account implements AccountInterface, Serializable{
   String fName;
   String lName;
   String email;
+  int j = 0;
   //public  ArrayList<String> BillingHistory = new ArrayList<String>();
   String BH = "Billing History \n";
   //String password;
@@ -27,7 +28,8 @@ public class Account implements AccountInterface, Serializable{
     return BH;
   }
   public void billingHistory(String List){
-   BH+=List;
+   j+=1;
+   BH=BH+j+") \n"+List;
   }
 
 }

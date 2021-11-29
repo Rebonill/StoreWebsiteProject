@@ -16,7 +16,7 @@ public class Checkout extends ItemStock{
     for(int i=0; i < checkout.size(); i++){
      //System.out.println(checkout.get(i));
      //System.out.println(itemcost.get(i));
-     List += checkout.get(i) +"\n"+ "$"+ itemcost.get(i)+"\n";
+     List +=checkout.get(i) +"\n"+ "$"+ itemcost.get(i)+"\n";
     }
     return List;
   }

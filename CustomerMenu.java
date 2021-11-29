@@ -11,12 +11,15 @@ public class CustomerMenu{
   }
 
   public void customerMenu(){
-    System.out.println(list);
     int response = customerOptions();
     while(keepGoing){
       if(response == 1){
         computerHardware();  
         keepGoing = false; 
+      }
+      else if(response == 2){
+       System.out.println(list);
+       response = customerOptions(); 
       }
       else if(response == 3){
         keepGoing = false;

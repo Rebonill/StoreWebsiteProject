@@ -13,7 +13,6 @@ public class Checkout extends ItemStock{
   }
 
   public String getcheckoutList(){
-    System.out.println("Here Is Your CheckOut List");
     for(int i=0; i < checkout.size(); i++){
      //System.out.println(checkout.get(i));
      //System.out.println(itemcost.get(i));

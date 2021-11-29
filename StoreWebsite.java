@@ -14,6 +14,9 @@ public class StoreWebsite extends ItemStock implements Website{
    //accountList.add(new Account("Admin", "Admin", "Admin@TechShop.com")); 
    loadAccount();
    MainPage();
+   //accountList.get(0).billingHistory("GPU"); 
+   //saveAccount();
+   //System.out.println(CM.List);
    //System.out.println(accountList.get(0).getbH());
    //registerAccount();
   }//end cunstructor
@@ -29,9 +32,10 @@ public class StoreWebsite extends ItemStock implements Website{
             if(Email.equals(accountList.get(i).getEmail())){
               System.out.println("Welcome " + accountList.get(i).getfName());
               bool = false;
+              CM.list = accountList.get(i).getbH();;
               CM.customerMenu();
-              //accountList.get(i).billingHistory(Co.List); 
-              //saveAccount();
+              accountList.get(i).billingHistory(CM.List); 
+              saveAccount();
             }//end if
             else if(i==accountList.size()-1){
               System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");

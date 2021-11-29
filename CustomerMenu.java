@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class CustomerMenu{
+  public String List = "";
+  String list = "";
   Checkout Co = new Checkout();
   Scanner input = new Scanner(System.in);
   boolean bool = true;
@@ -9,6 +11,7 @@ public class CustomerMenu{
   }
 
   public void customerMenu(){
+    System.out.println(list);
     int response = customerOptions();
     while(keepGoing){
       if(response == 1){
@@ -66,7 +69,9 @@ public class CustomerMenu{
         choice = hardwareOptions();
       }
       else if(choice == 2){
-       System.out.println(Co.getcheckoutList());
+       System.out.println("Here Is Your CheckOut List");
+       List = Co.getcheckoutList();
+       System.out.println(List);
        Co.getTotalCost();
        Co.writeFile();
        bool = false;

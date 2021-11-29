@@ -1,10 +1,11 @@
 import java.io.Serializable;
-
+import java.util.*;
 public class Account implements AccountInterface, Serializable{
   String fName;
   String lName;
   String email;
-  String BillingHistory;
+  //public  ArrayList<String> BillingHistory = new ArrayList<String>();
+  String BH = "Billing History \n";
   //String password;
 
   public Account(String fName, String lName, String email){
@@ -23,10 +24,10 @@ public class Account implements AccountInterface, Serializable{
     return email;
   }
   public String getbH(){
-    return BillingHistory;
+    return BH;
   }
   public void billingHistory(String List){
-   BillingHistory+=List; 
+   BH+=List;
   }
 
 }

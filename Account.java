@@ -27,7 +27,7 @@ public class Account implements AccountInterface, Serializable{
   }//end getbH
   public void billingHistory(String List){
    j+=1;
-   BH=BH+j+") \n"+List;
+   BH=BH+"\nPurchase Number: "+j+") \n"+List;
   }//end billingHistory
 
 }//end Account Ckass

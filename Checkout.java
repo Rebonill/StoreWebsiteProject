@@ -21,11 +21,12 @@ public class Checkout extends ItemStock{
     return List;
   }
   
-  public void getTotalCost(){
+  public int getTotalCost(){
     for(int i=0; i < checkout.size(); i++){
       Total +=itemcost.get(i);   
     }
-    System.out.println("Your Total Cost Will Be:");
-    System.out.println("$"+Total);
+    return Total;
+    //System.out.println("Your Total Cost Will Be:");
+    //System.out.println("$"+Total);
   }
 }

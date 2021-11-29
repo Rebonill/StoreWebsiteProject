@@ -71,11 +71,10 @@ public class CustomerMenu{
       }
       else if(choice == 2){
        System.out.println("Here Is Your Checkout List");
-       List = Co.getcheckoutList();
+       List = Co.getcheckoutList() +"Total Cost: \n" +"$" + Co.getTotalCost();
        System.out.println(List);
-       Co.getTotalCost();
+       //Co.getTotalCost();
        Co.writeFile();
-       //writeBilling();
        bool = false;
       }
       else{

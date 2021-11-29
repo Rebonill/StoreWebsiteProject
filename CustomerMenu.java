@@ -1,5 +1,5 @@
 import java.util.*;
-
+import java.io.*;
 public class CustomerMenu{
   public String List = "";
   String list = "";
@@ -7,9 +7,7 @@ public class CustomerMenu{
   Scanner input = new Scanner(System.in);
   boolean bool = true;
   boolean keepGoing = true;
-  public CustomerMenu(){
-  }
-
+  
   public void customerMenu(){
     int response = customerOptions();
     while(keepGoing){
@@ -72,11 +70,12 @@ public class CustomerMenu{
         choice = hardwareOptions();
       }
       else if(choice == 2){
-       System.out.println("Here Is Your CheckOut List");
+       System.out.println("Here Is Your Checkout List");
        List = Co.getcheckoutList();
        System.out.println(List);
        Co.getTotalCost();
        Co.writeFile();
+       //writeBilling();
        bool = false;
       }
       else{
@@ -94,7 +93,21 @@ public class CustomerMenu{
     int res = Integer.parseInt(Response);
     return res;
   }
-  
+   public void writeBilling(){
+    try{
+      File file = new File("BillingHistory.dat");
+      FileWriter fw = new FileWriter(file);
+      PrintWriter pw = new PrintWriter(fw);
+        pw.println(List);
+      pw.close();
+    }//end try
+    
+    catch(IOException e){
+      System.out.println(e.getMessage());
+    }//end catch
+   
+  }//end writeFile
+
 }
 
 

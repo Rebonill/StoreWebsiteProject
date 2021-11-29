@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class StoreWebsite extends ItemStock implements Website{
-  public ArrayList<Account> accountList = new ArrayList<Account>();
+  ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
   CustomerMenu CM = new CustomerMenu();
   boolean keepGoing = true;
@@ -11,14 +11,12 @@ public class StoreWebsite extends ItemStock implements Website{
     new StoreWebsite();   
   }
   public StoreWebsite(){
-   //accountList.add(new Account("Admin", "Admin", "Admin@TechShop.com")); 
    loadAccount();
    MainPage();
    //accountList.get(0).billingHistory("GPU"); 
    //saveAccount();
    //System.out.println(CM.List);
    //System.out.println(accountList.get(0).getbH());
-   //registerAccount();
   }//end cunstructor
 
   public void MainPage(){
@@ -34,8 +32,13 @@ public class StoreWebsite extends ItemStock implements Website{
               bool = false;
               CM.list = accountList.get(i).getbH();;
               CM.customerMenu();
-              accountList.get(i).billingHistory(CM.List); 
-              saveAccount();
+              if(CM.List.equals("")){
+               break; 
+              }
+	      else{
+                accountList.get(i).billingHistory(CM.List); 
+                saveAccount();
+              }
             }//end if
             else if(i==accountList.size()-1){
               System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
@@ -103,19 +106,19 @@ public class StoreWebsite extends ItemStock implements Website{
           if(Email.equals(accountList.get(i).getEmail())){
             accountList.remove(accountList.get(i));
             System.out.println("Account Removed");
-          }
+          }//end if statement
           else{
             System.out.println("Account Does Not Exitst");
           }//end else Statement
         }//end if Statement
         choice = AdminChoice();
-      }
+      }//end else if statement 
       else if(choice == 3){
         itemList();  
         System.out.println("Please Select An Item To Edit");
         EditStock();
         choice = AdminChoice(); 
-      }
+      }//end else if statement
       else if(choice == 4){
         System.out.println("Thank You And Have A Nice Day!");
         bool = false;
@@ -173,8 +176,8 @@ public class StoreWebsite extends ItemStock implements Website{
       System.out.println(itemName[i]+": "+itemCost[i]);
       System.out.println("Quantity: "+itemQuantity[i]);
       System.out.println();
-    } 
-  }
+    }//end for loop 
+  }//end itemList
    
   public void EditStock(){
     boolean KG = true;

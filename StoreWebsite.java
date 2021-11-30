@@ -7,16 +7,13 @@ public class StoreWebsite extends ItemStock implements Website{
   CustomerMenu CM = new CustomerMenu();
   boolean keepGoing = true;
   boolean bool = true;
+  String StockMessage="No Updates As Of Right Now";
   public static void main(String[] args){
     new StoreWebsite();   
   }
   public StoreWebsite(){
    loadAccount();
    MainPage();
-   //accountList.get(0).billingHistory("GPU"); 
-   //saveAccount();
-   //System.out.println(CM.List);
-   //System.out.println(accountList.get(0).getbH());
   }//end cunstructor
 
   public void MainPage(){
@@ -49,7 +46,6 @@ public class StoreWebsite extends ItemStock implements Website{
             i++;
             }//end else 
           }//end While Loop   
-        System.out.println("Sign into account");
         keepGoing = false;
       }//end if statement
       else if(response == 2){
@@ -87,6 +83,7 @@ public class StoreWebsite extends ItemStock implements Website{
 
   public void AdminMenu(){
     int choice = AdminChoice();
+    StockReadFile();
     while(bool){
       if(choice == 1){
         for(int i=0; i<accountList.size(); i++){
@@ -119,10 +116,15 @@ public class StoreWebsite extends ItemStock implements Website{
         EditStock();
         choice = AdminChoice(); 
       }//end else if statement
-      else if(choice == 4){
+      else if (choice ==4){
+        System.out.println(StockMessage); 
+        choice=AdminChoice(); 
+      }
+      else if(choice == 5){
         System.out.println("Thank You And Have A Nice Day!");
         bool = false;
-       saveAccount();
+        CM.stockWrite("No Update As of Right Now");
+        saveAccount();
       }//end else if
       else{
         System.out.println("Not a Menu Option Please Choose Again");
@@ -136,7 +138,8 @@ public class StoreWebsite extends ItemStock implements Website{
     System.out.println("1) Check Customer Account List");
     System.out.println("2) Remove Customer Account");
     System.out.println("3) Edit Stock Items");
-    System.out.println("4) Exit");
+    System.out.println("4) Stock Update Message");
+    System.out.println("5) Exit");
     try{
       String Response = input.nextLine();
       System.out.println();
@@ -255,5 +258,20 @@ public class StoreWebsite extends ItemStock implements Website{
     }//end catch
   
   }//end loadUser
+  
+  public void StockReadFile(){
+    try {
+      File item = new File("StockUpdate.dat");
+      Scanner input = new Scanner(item);
+       /*if(input.nextLine().equals("")){
+        }
+        else{*/
+        StockMessage = input.nextLine();
+	//}//end try
+    }
+     catch(IOException e){
+         System.out.println(e.getMessage());
+     } //end catch
+   }//end readFile
 
 }//end StoreWebsite

@@ -23,18 +23,28 @@ public class CustomerMenu{
         keepGoing = false;
       }
       else{
+        System.out.println("Not a Menu Option please choose again");
+        response = customerOptions();
       }
     }
   } 
 
   public int customerOptions(){
-    System.out.println("What would you like to do today?");
+    System.out.println("\nWhat would you like to do today?");
     System.out.println("1) Buy Computer HardWare.");
     System.out.println("2) See Billing History");
     System.out.println("3) Exit");
-    String choice = input.nextLine();
-    int Choice = Integer.parseInt(choice);
-    return Choice;
+    try{   
+      String choice = input.nextLine();
+      System.out.println();
+      int Choice = Integer.parseInt(choice);
+      return Choice;
+    }catch (NumberFormatException e){
+       System.out.println("Please Enter A Number");
+    }catch (Exception e){
+       System.out.println(e.getMessage());
+    } // end try 
+    return 0;
   }
 
   public void computerHardware(){
@@ -46,6 +56,7 @@ public class CustomerMenu{
       if(choice == 0){
         if(Co.getStock(choice)==0){
           System.out.println("We Apologize But This Item Is Out Of Stock");
+          stockWrite("GPU Out Of Stock Needs Restocking");
           System.out.println("Would You like To Choose A Different Product"+"\n");
           choice = hardwareOptions();
         }
@@ -60,18 +71,21 @@ public class CustomerMenu{
       else if(choice == 1){
         if(Co.getStock(choice)==1){
           System.out.println("We Apologize But This Item Is Out Of Stock");
+          stockWrite("CPU Out Of Stock Needs Restocking");
           System.out.println("Would You like To Choose A Different Product"+"\n");
           choice = hardwareOptions();
         }
+        else{
         Co.setcheckOutList(choice);
         System.out.println("Is there anything else you would like to add to your cart?"+"\n");
         System.out.println("Item added to Cart");
         Co.decreaseStock(choice);
         choice = hardwareOptions();
+        }
       }
       else if(choice == 2){
        System.out.println("Here Is Your Checkout List");
-       List = Co.getcheckoutList() +"Total Cost: \n" +"$" + Co.getTotalCost();
+       List = Co.getcheckoutList() +"Total Cost: \n" +"$" + Co.getTotalCost()+"\n";
        System.out.println(List);
        //Co.getTotalCost();
        Co.writeFile();
@@ -80,24 +94,30 @@ public class CustomerMenu{
       else{
        System.out.println("Not a Menu Option Try Again");
        choice = hardwareOptions(); 
-      }
-      
+      }   
     }//end while loop 
   }
   public int hardwareOptions(){
     System.out.println("0) GPU(Graphics Processing Unit");
     System.out.println("1) CPU (Central Processor Unit");
     System.out.println("2) Checkout");
-    String Response = input.nextLine();
-    int res = Integer.parseInt(Response);
-    return res;
-  }
-   public void writeBilling(){
     try{
-      File file = new File("BillingHistory.dat");
+      String Response = input.nextLine();
+      int res = Integer.parseInt(Response);
+      return res;  
+    }catch (NumberFormatException e){
+       System.out.println("Please Enter A Number");
+    }catch (Exception e){
+       System.out.println(e.getMessage());
+    } // end try 
+    return 0;
+  }
+  public void stockWrite(String Message){
+    try{
+      File file = new File("StockUpdate.dat");
       FileWriter fw = new FileWriter(file);
       PrintWriter pw = new PrintWriter(fw);
-        pw.println(List);
+      pw.println(Message);
       pw.close();
     }//end try
     
@@ -106,7 +126,7 @@ public class CustomerMenu{
     }//end catch
    
   }//end writeFile
-
+   
 }
 
 

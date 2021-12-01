@@ -21,36 +21,36 @@ public class StoreWebsite extends ItemStock implements Website{
     int response = pageChoice();
     while(keepGoing){
       if(response == 1){
-          System.out.println("Please Enter Your Email");
-          String Email = input.nextLine();         
-          while(bool){
-            if(Email.equals(accountList.get(i).getEmail())){
-              System.out.println("Welcome " + accountList.get(i).getfName());
-              bool = false;
-              CM.list = accountList.get(i).getbH();;
-              CM.customerMenu();
-              if(CM.List.equals("")){
-               break; 
-              }
-	      else{
-                accountList.get(i).billingHistory(CM.List); 
-                saveAccount();
-              }
-            }//end if
-            else if(i==accountList.size()-1){
-              System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
-              i=0;
-              Email = input.nextLine();
-            }//end else if
-            else{
+        System.out.println("Please Enter Your Email");
+        String Email = input.nextLine();         
+        while(bool){
+          if(Email.equals(accountList.get(i).getEmail())){
+            System.out.println("Welcome " + accountList.get(i).getfName());
+            bool = false;
+            CM.list = accountList.get(i).getbH();;
+            CM.customerMenu();
+            if(CM.List.equals("")){
+              break; 
+            }
+	    else{
+              accountList.get(i).billingHistory(CM.List); 
+              saveAccount();
+            }
+          }//end if
+          else if(i==accountList.size()-1){
+            System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
+            i=0;
+            Email = input.nextLine();
+          }//end else if
+          else{
             i++;
-            }//end else 
-          }//end While Loop   
+          }//end else 
+        }//end While Loop   
         keepGoing = false;
       }//end if statement
       else if(response == 2){
-         registerAccount();
-         keepGoing = false;
+        registerAccount();
+        keepGoing = false;
       }//end if statement 
       else if(response == 3){
         System.out.println("Continue As Guest");
@@ -58,21 +58,21 @@ public class StoreWebsite extends ItemStock implements Website{
         keepGoing = false;
       }//end if statement
       else if(response==4){
-         System.out.println("Please Enter Your Email");
-         String Email = input.nextLine();
-         System.out.println();         
-           while(bool){
-             if(Email.equals("Admin@TechShop.com")){
-               System.out.println("Welcome Admin");
-               AdminMenu();
-               bool = false;
-             }//end if statement 
-             else{
-               System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
-               Email = input.nextLine();
-             }//end else statement
-           }//End While Loop
-             keepGoing = false;
+        System.out.println("Please Enter Your Email");
+        String Email = input.nextLine();
+        System.out.println();         
+        while(bool){
+          if(Email.equals("Admin@TechShop.com")){
+            System.out.println("Welcome Admin");
+            AdminMenu();
+            bool = false;
+          }//end if statement 
+          else{
+            System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
+            Email = input.nextLine();
+          }//end else statement
+        }//End While Loop
+        keepGoing = false;
       }//end if statement
       else {
         System.out.println("Not a Menu Option please choose again");
@@ -85,47 +85,57 @@ public class StoreWebsite extends ItemStock implements Website{
     int choice = AdminChoice();
     StockReadFile();
     while(bool){
+
       if(choice == 1){
         for(int i=0; i<accountList.size(); i++){
-          
           System.out.println(i+1+"\n"+"First and Last Name");
           System.out.println(accountList.get(i).getfName()+" "+accountList.get(i).getlName());
           System.out.println("Email");
           System.out.println(accountList.get(i).getEmail()+"\n");
-          //System.out.println(getitemName(i));
         }//end forloop
-        choice = AdminChoice();
+      choice = AdminChoice();
       }//end if statement
+
       else if(choice == 2){
         System.out.println("Please Type The Email Associated With The Account You Want To Delete.");
         String Email = input.nextLine();
+        boolean bool = true;
+
         for(int i=0; i<accountList.size(); i++){
           if(Email.equals(accountList.get(i).getEmail())){
             accountList.remove(accountList.get(i));
             System.out.println("Account Removed");
+            choice = AdminChoice();
+            bool = false;
           }//end if statement
-          else{
-            System.out.println("Account Does Not Exitst");
-          }//end else Statement
-        }//end if Statement
-        choice = AdminChoice();
-      }//end else if statement 
+        }//end forloop
+     
+        if(bool == true){
+          System.out.println("Account Does Not Exitst");
+        }//end if Statement*/
+      }//end else if Statement
+      
       else if(choice == 3){
         itemList();  
         System.out.println("Please Select An Item To Edit");
         EditStock();
+        CM.stockWrite("No Update As of Right Now");
         choice = AdminChoice(); 
       }//end else if statement
+
       else if (choice ==4){
+        StockReadFile();
         System.out.println(StockMessage); 
         choice=AdminChoice(); 
       }
+
       else if(choice == 5){
         System.out.println("Thank You And Have A Nice Day!");
         bool = false;
-        CM.stockWrite("No Update As of Right Now");
+        //CM.stockWrite("No Update As of Right Now");
         saveAccount();
       }//end else if
+
       else{
         System.out.println("Not a Menu Option Please Choose Again");
         choice = AdminChoice();
@@ -191,26 +201,26 @@ public class StoreWebsite extends ItemStock implements Website{
         itemQuantity[choice] = Integer.parseInt(input.nextLine()); 
         System.out.println("Would You Like To Edit Another Item?"); 
         choice = StockItems();
-      }
+      }//end if statement
       
       else if(choice == 1){
         System.out.println("Enter New Quantiy For "+getitemName(choice));
         itemQuantity[choice] = Integer.parseInt(input.nextLine());  
         System.out.println("Would You Like To Edit Another Item?");
         choice = StockItems();   
-      }
+      }//end else if
       else if(choice == 2){
         System.out.println("Updated Stock Information");
         itemList();
         writeFile();
         KG = false;
-      }
+      }//end else if
       else{
         System.out.println("Not a Menu Option Try Again");
         choice = StockItems();
-      } 
+      }//end else 
     }//end while loop 
-  }
+  }//end editstock
 
  public int StockItems(){
    System.out.println("0) GPU(Graphics Processing Unit)");
@@ -219,7 +229,7 @@ public class StoreWebsite extends ItemStock implements Website{
    String Response = input.nextLine();
    int res = Integer.parseInt(Response);
    return res;
- }  
+ }//end StockItems  
   
   public void registerAccount(){
     System.out.println("Enter Your First Name");
@@ -263,15 +273,10 @@ public class StoreWebsite extends ItemStock implements Website{
     try {
       File item = new File("StockUpdate.dat");
       Scanner input = new Scanner(item);
-       /*if(input.nextLine().equals("")){
-        }
-        else{*/
-        StockMessage = input.nextLine();
-	//}//end try
-    }
+      StockMessage = input.nextLine();
+    }//end try
      catch(IOException e){
          System.out.println(e.getMessage());
      } //end catch
    }//end readFile
-
 }//end StoreWebsite

@@ -69,7 +69,7 @@ public class CustomerMenu{
         }
       }  
       else if(choice == 1){
-        if(Co.getStock(choice)==1){
+        if(Co.getStock(choice)==0){
           System.out.println("We Apologize But This Item Is Out Of Stock");
           stockWrite("CPU Out Of Stock Needs Restocking");
           System.out.println("Would You like To Choose A Different Product"+"\n");
@@ -77,8 +77,8 @@ public class CustomerMenu{
         }
         else{
         Co.setcheckOutList(choice);
-        System.out.println("Is there anything else you would like to add to your cart?"+"\n");
         System.out.println("Item added to Cart");
+        System.out.println("Is there anything else you would like to add to your cart?"+"\n");
         Co.decreaseStock(choice);
         choice = hardwareOptions();
         }

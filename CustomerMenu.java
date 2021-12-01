@@ -91,6 +91,10 @@ public class CustomerMenu{
        Co.writeFile();
        bool = false;
       }
+      else if(choice == 3){
+        System.out.println("Thank You For Visiting TechShop. Please Come Again!!");
+        bool = false;
+      }
       else{
        System.out.println("Not a Menu Option Try Again");
        choice = hardwareOptions(); 
@@ -101,6 +105,7 @@ public class CustomerMenu{
     System.out.println("0) GPU(Graphics Processing Unit");
     System.out.println("1) CPU (Central Processor Unit");
     System.out.println("2) Checkout");
+    System.out.println("3) Exit/No Purchase");
     try{
       String Response = input.nextLine();
       int res = Integer.parseInt(Response);

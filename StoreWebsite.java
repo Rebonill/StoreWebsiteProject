@@ -22,9 +22,11 @@ public class StoreWebsite extends ItemStock implements Website{
     while(keepGoing){
       if(response == 1){
         System.out.println("Please Enter Your Email");
-        String Email = input.nextLine();         
+        String Email = input.nextLine();
+        System.out.println("Please Enter Your Password");
+        String Password = input.nextLine();
         while(bool){
-          if(Email.equals(accountList.get(i).getEmail())){
+          if(Email.equals(accountList.get(i).getEmail())&&Password.equals(accountList.get(i).getPassword())){
             System.out.println("Welcome " + accountList.get(i).getfName());
             bool = false;
             CM.list = accountList.get(i).getbH();;
@@ -38,9 +40,12 @@ public class StoreWebsite extends ItemStock implements Website{
             }
           }//end if
           else if(i==accountList.size()-1){
-            System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
+            System.out.println("This is an Incorrect Email And/Or Password!"+"\n"+"Try Again.\n");
             i=0;
+            System.out.println("Enter Email Again");
             Email = input.nextLine();
+            System.out.println("Enter Password Again");
+            Password = input.nextLine();
           }//end else if
           else{
             i++;
@@ -117,9 +122,9 @@ public class StoreWebsite extends ItemStock implements Website{
       
       else if(choice == 3){
         itemList();  
-        System.out.println("Please Select An Item To Edit");
+        System.out.println("Please Select An Item To Edit\n");
         EditStock();
-        CM.stockWrite("No Update As of Right Now");
+        CM.stockWrite("No Update As of Right Now\n");
         choice = AdminChoice(); 
       }//end else if statement
 
@@ -132,7 +137,6 @@ public class StoreWebsite extends ItemStock implements Website{
       else if(choice == 5){
         System.out.println("Thank You And Have A Nice Day!");
         bool = false;
-        //CM.stockWrite("No Update As of Right Now");
         saveAccount();
       }//end else if
 
@@ -144,7 +148,7 @@ public class StoreWebsite extends ItemStock implements Website{
   }//end AdmninMenu
     
   public int AdminChoice(){
-    System.out.println("Here Are Your Menu Choices");
+    System.out.println("\nHere Are Your Menu Choices");
     System.out.println("1) Check Customer Account List");
     System.out.println("2) Remove Customer Account");
     System.out.println("3) Edit Stock Items");
@@ -165,7 +169,7 @@ public class StoreWebsite extends ItemStock implements Website{
   
   public int pageChoice(){
     System.out.println();
-    System.out.println("Welcome To TechStop \n");
+    System.out.println("Welcome To TechShop \n"+"Here Are Your Menu Options \n");
     System.out.println("1) Sign Into Your Account.");
     System.out.println("2) Register For An Acount.");
     System.out.println("3) Conintue As Guest.");
@@ -188,7 +192,7 @@ public class StoreWebsite extends ItemStock implements Website{
     for(int i=0; i<itemName.length; i++){
       System.out.println(itemName[i]+": "+itemCost[i]);
       System.out.println("Quantity: "+itemQuantity[i]);
-      System.out.println();
+      //System.out.println();
     }//end for loop 
   }//end itemList
    
@@ -197,20 +201,26 @@ public class StoreWebsite extends ItemStock implements Website{
     int choice = StockItems();
     while(KG){
       if(choice == 0){
-        System.out.println("Enter New Quantiy For "+getitemName(choice));
+        System.out.println("\nEnter New Quantiy For "+getitemName(choice));
         itemQuantity[choice] = Integer.parseInt(input.nextLine()); 
-        System.out.println("Would You Like To Edit Another Item?"); 
+        System.out.println("\nWould You Like To Edit Another Item?"); 
         choice = StockItems();
       }//end if statement
       
       else if(choice == 1){
-        System.out.println("Enter New Quantiy For "+getitemName(choice));
+        System.out.println("\nEnter New Quantiy For "+getitemName(choice));
         itemQuantity[choice] = Integer.parseInt(input.nextLine());  
-        System.out.println("Would You Like To Edit Another Item?");
+        System.out.println("\nWould You Like To Edit Another Item?");
         choice = StockItems();   
       }//end else if
       else if(choice == 2){
-        System.out.println("Updated Stock Information");
+        System.out.println("\nEnter New Quantiy For "+getitemName(choice));
+        itemQuantity[choice] = Integer.parseInt(input.nextLine());  
+        System.out.println("\nWould You Like To Edit Another Item?");
+        choice = StockItems();   
+      }//end else if
+      else if(choice == 3){
+        System.out.println("\nUpdated Stock Information\n");
         itemList();
         writeFile();
         KG = false;
@@ -225,7 +235,8 @@ public class StoreWebsite extends ItemStock implements Website{
  public int StockItems(){
    System.out.println("0) GPU(Graphics Processing Unit)");
    System.out.println("1) CPU (Central Processor Unit)");
-   System.out.println("2) Exit");
+   System.out.println("2) RAM (Random Access Memory)");
+   System.out.println("3) Exit");
    String Response = input.nextLine();
    int res = Integer.parseInt(Response);
    return res;
@@ -238,7 +249,9 @@ public class StoreWebsite extends ItemStock implements Website{
     String lName = input.nextLine();
     System.out.println("Enter Your Email");
     String Email = input.nextLine();
-    accountList.add(new Account(fName, lName, Email));
+    System.out.println("Enter Your Password");
+    String Password = input.nextLine();
+    accountList.add(new Account(fName, lName, Email, Password));
     saveAccount();
   }//end registeraccount
 

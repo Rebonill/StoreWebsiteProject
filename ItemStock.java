@@ -2,16 +2,16 @@ import java.util.*;
 import java.io.*;
 
 public class ItemStock{
-  String[] itemName = new String[2];
-  int[] itemQuantity = new int[2];
-  int [] itemCost = new int[2];
+  String[] itemName = new String[3];
+  int[] itemQuantity = new int[3];
+  int[] itemCost = new int[3];
   int i;
   public  ItemStock(){
     readFile();
   }
 
   public void readFile(){
-    try {
+    try{
       File item = new File("ItemStock.dat");
       Scanner input = new Scanner(item);
       while (input.hasNext()){
@@ -26,7 +26,7 @@ public class ItemStock{
         itemCost[i] = Cost; 
 	i++; 
       } //end while
-	}//end try
+    }//end try
           catch (IOException e){
             System.out.println(e.getMessage());
 	  } //end catch
@@ -37,13 +37,12 @@ public class ItemStock{
       File file = new File("ItemStock.dat");
       FileWriter fw = new FileWriter(file);
       PrintWriter pw = new PrintWriter(fw);
-      //pw.print("");
       
       for(int i = 0; i < itemName.length; i++){  
         pw.println(itemName[i]);
         pw.println(itemQuantity[i]);
         pw.println(itemCost[i]);
-      }
+      }//end for loop
       
       pw.close();
     }//end try
@@ -55,21 +54,20 @@ public class ItemStock{
   }//end writeFile
   public void itemList(){
     for(int i=0; i<itemName.length; i++){
-      System.out.println(itemName[i]+": "+itemCost[i]);
-    } 
-  }
+      System.out.println(itemName[i]+": $"+itemCost[i]);
+    }//end for loop
+  }//end itemList
   public String getitemName(int i){
     return itemName[i];
-  } 
+  }//end getitemName
    
   public int getStock(int i){
     return itemQuantity[i];
-  }
+  }//end getStock
   public int getCost(int i){
     return itemCost[i];
-  }
+  }//end getCost
   public void decreaseStock(int i){
     itemQuantity[i]-=1;
-  }
-
+  }//end decreaseStock
 }//end ItemStock

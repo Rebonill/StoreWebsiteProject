@@ -4,13 +4,14 @@ public class Account implements AccountInterface, Serializable{
   String fName;
   String lName;
   String email;
+  String password;
   public String BH = "Billing History \n";
   int j = 0;
-  //String password;
-  public Account(String fName, String lName, String email){
+  public Account(String fName, String lName, String email, String password){
     this.fName = fName;
     this.lName = lName;
     this.email = email;
+    this.password = password;
   }//end Account
 
   public String getfName(){
@@ -22,9 +23,13 @@ public class Account implements AccountInterface, Serializable{
   public String getEmail(){
     return email;
   }//end getEmail
+  public String getPassword(){
+    return password;
+  }
   public String getbH(){
     return BH;
   }//end getbH
+ 
   public void billingHistory(String List){
    j+=1;
    BH=BH+"\nPurchase Number: "+j+") \n"+List;

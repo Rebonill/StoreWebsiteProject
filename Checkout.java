@@ -5,28 +5,24 @@ public class Checkout extends ItemStock{
   String List="";
   int Total = 0;
   public Checkout(){
-  }
+  }//end constructor
 
   public void setcheckOutList(int i){
     checkout.add(getitemName(i));
     itemcost.add(getCost(i));
-  }
+  }//end setcheckOutList
 
   public String getcheckoutList(){
     for(int i=0; i < checkout.size(); i++){
-     //System.out.println(checkout.get(i));
-     //System.out.println(itemcost.get(i));
      List +=checkout.get(i) +"\n"+ "$"+ itemcost.get(i)+"\n";
-    }
+    }//end for loop
     return List;
-  }
+  }//end getcheckoutList
   
   public int getTotalCost(){
     for(int i=0; i < checkout.size(); i++){
       Total +=itemcost.get(i);   
-    }
+    }//end for loop
     return Total;
-    //System.out.println("Your Total Cost Will Be:");
-    //System.out.println("$"+Total);
-  }
+  }//end fetTotalCost
 }

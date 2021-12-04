@@ -124,9 +124,9 @@ public class CustomerMenu{
   }//end computerHardware
 
   public int hardwareOptions(){
-    System.out.println("0) GPU(Graphics Processing Unit)");
+    System.out.println("0) GPU (Graphics Processing Unit)");
     System.out.println("1) CPU (Central Processor Unit)");
-    System.out.println("2) CPU (Central Processor Unit)");
+    System.out.println("2) RAM (Random Access Memory)");
     System.out.println("3) Checkout");
     System.out.println("4) Exit/No Purchase");
     try{

@@ -233,7 +233,7 @@ public class StoreWebsite extends ItemStock implements Website{
   }//end editstock
 
  public int StockItems(){
-   System.out.println("0) GPU(Graphics Processing Unit)");
+   System.out.println("0) GPU (Graphics Processing Unit)");
    System.out.println("1) CPU (Central Processor Unit)");
    System.out.println("2) RAM (Random Access Memory)");
    System.out.println("3) Exit");

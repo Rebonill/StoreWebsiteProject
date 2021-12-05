@@ -251,8 +251,20 @@ public class StoreWebsite extends ItemStock implements Website{
     String Email = input.nextLine();
     System.out.println("Enter Your Password");
     String Password = input.nextLine();
-    accountList.add(new Account(fName, lName, Email, Password));
-    saveAccount();
+    while(bool){
+      if(Password.contains("-")||Password.contains("#")||Password.contains("@")||Password.contains("!")){
+        accountList.add(new Account(fName, lName, Email, Password));
+        saveAccount();
+        System.out.println("Thank You For Creating An Account With TechShop!");
+        bool = false;
+      }
+      else{
+        bool=true;
+        System.out.println("Password Does Not Contain At Least One of These Characters ( -, #, @, !)");
+        System.out.println("Please Reenter A New Password.");
+        Password = input.nextLine();
+      }
+    }//end while loop
   }//end registeraccount
 
   public void saveAccount(){

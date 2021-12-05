@@ -36,10 +36,10 @@ public class CustomerMenu{
   }//end customerMenu 
 
   public int customerOptions(){
-    System.out.println("\nWhat would you like to do today?");
-    System.out.println("1) Buy Computer HardWare.");
-    System.out.println("2) See Billing History");
-    System.out.println("3) Exit");
+    System.out.println("\n|What would you like to do today?|\n");
+    System.out.println("1) |Buy Computer HardWare|");
+    System.out.println("2) |See Billing History|");
+    System.out.println("3) |Exit|");
     try{   
       String choice = input.nextLine();
       System.out.println();
@@ -54,21 +54,21 @@ public class CustomerMenu{
   }//end custoemrOptions
 
   public void computerHardware(){
-    System.out.println("Here Is A List Of Our Computer Hardware And Prices");
+    System.out.println("|Here Is A List Of Our Computer Hardware And Prices|\n");
     Co.itemList();
-    System.out.println("What Would You Like to Buy?"+"\n");
+    System.out.println("\n|What Would You Like to Buy?|"+"\n");
     int choice = hardwareOptions();
     while(bool){
       if(choice == 0){
         if(Co.getStock(choice)==0){
-          System.out.println("We Apologize But This Item Is Out Of Stock");
+          System.out.println("|We Apologize But This Item Is Out Of Stock|");
           stockWrite("GPU Out Of Stock Needs Restocking");
-          System.out.println("Would You like To Choose A Different Product"+"\n");
+          System.out.println("|Would You like To Choose A Different Product|"+"\n");
           choice = hardwareOptions();
         }//end if statement
         else{
           Co.setcheckOutList(choice);
-          System.out.println("Item added to Cart");
+          System.out.println("\nItem added to Cart");
           System.out.println("Is there anything else you would like to add to your cart?"+"\n");
           Co.decreaseStock(choice);
           choice = hardwareOptions();
@@ -76,14 +76,14 @@ public class CustomerMenu{
       }//end if statement
       else if(choice == 1){
         if(Co.getStock(choice)==0){
-          System.out.println("We Apologize But This Item Is Out Of Stock");
+          System.out.println("|We Apologize But This Item Is Out Of Stock|");
           stockWrite("CPU Out Of Stock Needs Restocking");
-          System.out.println("Would You like To Choose A Different Product"+"\n");
+          System.out.println("|Would You like To Choose A Different Product|"+"\n");
           choice = hardwareOptions();
         }//end else if statement
         else{
           Co.setcheckOutList(choice);
-          System.out.println("Item added to Cart");
+          System.out.println("\nItem added to Cart");
           System.out.println("Is there anything else you would like to add to your cart?"+"\n");
           Co.decreaseStock(choice);
           choice = hardwareOptions();
@@ -91,14 +91,14 @@ public class CustomerMenu{
       }//end else if statement
       else if(choice == 2){
         if(Co.getStock(choice)==0){
-          System.out.println("We Apologize But This Item Is Out Of Stock");
+          System.out.println("|We Apologize But This Item Is Out Of Stock|");
           stockWrite("RAM Out Of Stock Needs Restocking");
-          System.out.println("Would You like To Choose A Different Product"+"\n");
+          System.out.println("|Would You like To Choose A Different Product|"+"\n");
           choice = hardwareOptions();
         }//end else if statement
         else{
           Co.setcheckOutList(choice);
-          System.out.println("Item added to Cart");
+          System.out.println("\nItem added to Cart");
           System.out.println("Is there anything else you would like to add to your cart?"+"\n");
           Co.decreaseStock(choice);
           choice = hardwareOptions();
@@ -106,9 +106,10 @@ public class CustomerMenu{
       }//end else if statement 
  
       else if(choice == 3){
-        System.out.println("Here Is Your Checkout List");
+        System.out.println("\n|Here Is Your Checkout List|\n");
         List = Co.getcheckoutList() +"Total Cost: \n" +"$" + Co.getTotalCost()+"\n";
         System.out.println(List);
+        System.out.println("Thank You For Shopping at Techshop Please Come Again!!");
         Co.writeFile();
         bool = false;
       }//end else if
@@ -124,11 +125,11 @@ public class CustomerMenu{
   }//end computerHardware
 
   public int hardwareOptions(){
-    System.out.println("0) GPU (Graphics Processing Unit)");
-    System.out.println("1) CPU (Central Processor Unit)");
-    System.out.println("2) RAM (Random Access Memory)");
-    System.out.println("3) Checkout");
-    System.out.println("4) Exit/No Purchase");
+    System.out.println("0) |GPU (Graphics Processing Unit)|");
+    System.out.println("1) |CPU (Central Processor Unit)|");
+    System.out.println("2) |RAM (Random Access Memory)|");
+    System.out.println("3) |Checkout|");
+    System.out.println("4) |Exit/No Purchase|");
     try{
       String Response = input.nextLine();
       int res = Integer.parseInt(Response);

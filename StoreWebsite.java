@@ -5,6 +5,7 @@ public class StoreWebsite extends ItemStock implements Website{
   ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
   CustomerMenu CM = new CustomerMenu();
+  Formatter f = new Formatter();
   boolean keepGoing = true;
   boolean bool = true;
   String StockMessage="No Updates As Of Right Now";
@@ -21,13 +22,13 @@ public class StoreWebsite extends ItemStock implements Website{
     int response = pageChoice();
     while(keepGoing){
       if(response == 1){
-        System.out.println("Please Enter Your Email");
+        System.out.println("|Please Enter Your Email|");
         String Email = input.nextLine();
-        System.out.println("Please Enter Your Password");
+        System.out.println("|Please Enter Your Password|");
         String Password = input.nextLine();
         while(bool){
           if(Email.equals(accountList.get(i).getEmail())&&Password.equals(accountList.get(i).getPassword())){
-            System.out.println("Welcome " + accountList.get(i).getfName());
+            System.out.println("|Welcome " + accountList.get(i).getfName()+"|");
             bool = false;
             CM.list = accountList.get(i).getbH();;
             CM.customerMenu();
@@ -58,23 +59,28 @@ public class StoreWebsite extends ItemStock implements Website{
         keepGoing = false;
       }//end if statement 
       else if(response == 3){
-        System.out.println("Continue As Guest");
+        System.out.println("|Welcome Guest|");
         CM.customerMenu(); 
         keepGoing = false;
       }//end if statement
       else if(response==4){
-        System.out.println("Please Enter Your Email");
+        System.out.println("|Please Enter Your Email|");
         String Email = input.nextLine();
+        System.out.println("|Please Enter Your Password|");
+        String Password = input.nextLine();
         System.out.println();         
         while(bool){
-          if(Email.equals("Admin@TechShop.com")){
-            System.out.println("Welcome Admin");
+          if(Email.equals("Admin@TechShop.com") && Password.equals("1234")){
+            System.out.println("|***Welcome Admin***|");
             AdminMenu();
             bool = false;
           }//end if statement 
           else{
-            System.out.println("This is an Incorrect Email"+"\n"+"Try Again.");
+            System.out.println("This is an Incorrect Email or Password "+"\n"+"Try Again.");
+            System.out.println("Please Enter Your Email");
             Email = input.nextLine();
+            System.out.println("Please Enter Your Password");
+            Password = input.nextLine();
           }//end else statement
         }//End While Loop
         keepGoing = false;
@@ -93,10 +99,12 @@ public class StoreWebsite extends ItemStock implements Website{
 
       if(choice == 1){
         for(int i=0; i<accountList.size(); i++){
-          System.out.println(i+1+"\n"+"First and Last Name");
-          System.out.println(accountList.get(i).getfName()+" "+accountList.get(i).getlName());
-          System.out.println("Email");
+          System.out.println("["+(i+1)+"]"+"\n"+"|First and Last Name|");
+          System.out.println(accountList.get(i).getfName()+" "+accountList.get(i).getlName()+"\n");
+          System.out.println("|Email|");
           System.out.println(accountList.get(i).getEmail()+"\n");
+          System.out.println("|Password|");
+          System.out.println(accountList.get(i).getPassword()+"\n");
         }//end forloop
       choice = AdminChoice();
       }//end if statement
@@ -122,7 +130,7 @@ public class StoreWebsite extends ItemStock implements Website{
       
       else if(choice == 3){
         itemList();  
-        System.out.println("Please Select An Item To Edit\n");
+        System.out.println("\n|Please Select An Item To Edit|\n");
         EditStock();
         CM.stockWrite("No Update As of Right Now\n");
         choice = AdminChoice(); 
@@ -141,19 +149,19 @@ public class StoreWebsite extends ItemStock implements Website{
       }//end else if
 
       else{
-        System.out.println("Not a Menu Option Please Choose Again");
+        System.out.println("\nNot a Menu Option Please Choose Again\n");
         choice = AdminChoice();
       }//end else
     }//end while loop
   }//end AdmninMenu
     
   public int AdminChoice(){
-    System.out.println("\nHere Are Your Menu Choices");
-    System.out.println("1) Check Customer Account List");
-    System.out.println("2) Remove Customer Account");
-    System.out.println("3) Edit Stock Items");
-    System.out.println("4) Stock Update Message");
-    System.out.println("5) Exit");
+    System.out.println("\nHere Are Your Menu Choices\n");
+    System.out.println("1) |Check Customer Account List|");
+    System.out.println("2) |Remove Customer Account|");
+    System.out.println("3) |Edit Stock Items|");
+    System.out.println("4) |Stock Update Message|");
+    System.out.println("5) |Exit|");
     try{
       String Response = input.nextLine();
       System.out.println();
@@ -169,11 +177,11 @@ public class StoreWebsite extends ItemStock implements Website{
   
   public int pageChoice(){
     System.out.println();
-    System.out.println("Welcome To TechShop \n"+"Here Are Your Menu Options \n");
-    System.out.println("1) Sign Into Your Account.");
-    System.out.println("2) Register For An Acount.");
-    System.out.println("3) Conintue As Guest.");
-    System.out.println("4) Admin Sign In." +"\n");
+    System.out.println("/***Welcome To TechShop***/ \n"+"\nBefore Continuing The Site Please Choose A Menu Option. \n");
+    System.out.println("1) |Sign Into Your Account|");
+    System.out.println("2) |Register For An Acount|");
+    System.out.println("3) |Conintue As Guest|");
+    System.out.println("4) |Admin Sign In|" +"\n");
     try{ 
       String choice = input.nextLine();
       System.out.println();
@@ -188,11 +196,10 @@ public class StoreWebsite extends ItemStock implements Website{
   }//end pageChoice
 
   public void itemList(){
-    System.out.println("Here Is The List Of All The Items");
+    System.out.println("|Here Is The List Of All The Items|\n");
     for(int i=0; i<itemName.length; i++){
-      System.out.println(itemName[i]+": "+itemCost[i]);
+      System.out.println(itemName[i]+": "+"$"+itemCost[i]);
       System.out.println("Quantity: "+itemQuantity[i]);
-      //System.out.println();
     }//end for loop 
   }//end itemList
    
@@ -201,71 +208,78 @@ public class StoreWebsite extends ItemStock implements Website{
     int choice = StockItems();
     while(KG){
       if(choice == 0){
-        System.out.println("\nEnter New Quantiy For "+getitemName(choice));
+        System.out.println("\n|Enter New Quantiy For "+getitemName(choice)+"|");
         itemQuantity[choice] = Integer.parseInt(input.nextLine()); 
-        System.out.println("\nWould You Like To Edit Another Item?"); 
+        System.out.println("\n|Would You Like To Edit Another Item?|"); 
         choice = StockItems();
       }//end if statement
       
       else if(choice == 1){
-        System.out.println("\nEnter New Quantiy For "+getitemName(choice));
+        System.out.println("\nEnter New Quantiy For "+getitemName(choice)+"|");
         itemQuantity[choice] = Integer.parseInt(input.nextLine());  
-        System.out.println("\nWould You Like To Edit Another Item?");
+        System.out.println("\n|Would You Like To Edit Another Item?|");
         choice = StockItems();   
       }//end else if
       else if(choice == 2){
-        System.out.println("\nEnter New Quantiy For "+getitemName(choice));
+        System.out.println("\n|Enter New Quantiy For "+getitemName(choice)+"|");
         itemQuantity[choice] = Integer.parseInt(input.nextLine());  
-        System.out.println("\nWould You Like To Edit Another Item?");
+        System.out.println("\n|Would You Like To Edit Another Item?|");
         choice = StockItems();   
       }//end else if
       else if(choice == 3){
-        System.out.println("\nUpdated Stock Information\n");
+        System.out.println("\n|Updated Stock Information|\n");
         itemList();
         writeFile();
         KG = false;
       }//end else if
       else{
-        System.out.println("Not a Menu Option Try Again");
+        System.out.println("\n|Not a Menu Option Try Again|\n");
         choice = StockItems();
       }//end else 
     }//end while loop 
   }//end editstock
 
  public int StockItems(){
-   System.out.println("0) GPU (Graphics Processing Unit)");
-   System.out.println("1) CPU (Central Processor Unit)");
-   System.out.println("2) RAM (Random Access Memory)");
-   System.out.println("3) Exit");
-   String Response = input.nextLine();
-   int res = Integer.parseInt(Response);
-   return res;
+   System.out.println("0) |GPU (Graphics Processing Unit)|");
+   System.out.println("1) |CPU (Central Processor Unit)|");
+   System.out.println("2) |RAM (Random Access Memory)|");
+   System.out.println("3) |Exit|");
+    try{
+      String Response = input.nextLine();
+      int res = Integer.parseInt(Response);
+       return res;
+    }catch (NumberFormatException e){
+       System.out.println("Please Enter A Number");
+    }catch (Exception e){
+       System.out.println(e.getMessage());
+    } // end try 
+    return 0;
  }//end StockItems  
   
-  public void registerAccount(){
-    System.out.println("Enter Your First Name");
-    String fName = input.nextLine();
-    System.out.println("Enter Your Last Name");
-    String lName = input.nextLine();
-    System.out.println("Enter Your Email");
-    String Email = input.nextLine();
-    System.out.println("Enter Your Password");
-    String Password = input.nextLine();
-    while(bool){
-      if(Password.contains("-")||Password.contains("#")||Password.contains("@")||Password.contains("!")){
-        accountList.add(new Account(fName, lName, Email, Password));
-        saveAccount();
-        System.out.println("Thank You For Creating An Account With TechShop!");
-        bool = false;
-      }
-      else{
-        bool=true;
-        System.out.println("\nPassword Does Not Contain At Least One of These Characters ( -, #, @, !)");
-        System.out.println("Please Reenter A New Password.\n");
-        Password = input.nextLine();
-      }
-    }//end while loop
-  }//end registeraccount
+ public void registerAccount(){
+   System.out.println("|Enter Your First Name|");
+   String fName = input.nextLine();
+   System.out.println("|Enter Your Last Name|");
+   String lName = input.nextLine();
+   System.out.println("|Enter Your Email|");
+   String Email = input.nextLine();
+   System.out.println("|Enter Your Password|");
+   String Password = input.nextLine();
+   while(bool){
+     if(Password.contains("-")||Password.contains("#")||Password.contains("@")||Password.contains("!")){
+       accountList.add(new Account(fName, lName, Email, Password));
+       saveAccount();
+       System.out.println("Thank You For Creating An Account With TechShop!");
+       bool = false;
+     }
+     else{
+       bool=true;
+       System.out.println("\nPassword Does Not Contain At Least One of These Characters ( -, #, @, !)");
+       System.out.println("Please Reenter A New Password.\n");
+       Password = input.nextLine();
+     }
+   }//end while loop
+ }//end registeraccount
 
   public void saveAccount(){
     try{

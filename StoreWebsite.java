@@ -260,8 +260,8 @@ public class StoreWebsite extends ItemStock implements Website{
       }
       else{
         bool=true;
-        System.out.println("Password Does Not Contain At Least One of These Characters ( -, #, @, !)");
-        System.out.println("Please Reenter A New Password.");
+        System.out.println("\nPassword Does Not Contain At Least One of These Characters ( -, #, @, !)");
+        System.out.println("Please Reenter A New Password.\n");
         Password = input.nextLine();
       }
     }//end while loop

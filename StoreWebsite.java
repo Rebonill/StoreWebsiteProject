@@ -5,7 +5,7 @@ public class StoreWebsite extends ItemStock implements Website{
   ArrayList<Account> accountList = new ArrayList<Account>();
   Scanner input = new Scanner(System.in);
   CustomerMenu CM = new CustomerMenu();
-  Formatter f = new Formatter();
+  //Formatter f = new Formatter();
   boolean keepGoing = true;
   boolean bool = true;
   String StockMessage="No Updates As Of Right Now";
